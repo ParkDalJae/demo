@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-public class User {
+public class UserVO {
     private int no;
     private String name;
     private int number;
@@ -9,11 +9,11 @@ public class User {
     private int currentScore;
 
     // 기본 생성자
-    public User() {
+    public UserVO() {
     }
 
     // 모든 필드를 포함하는 생성자
-    public User(int no, String name, int number, String id, int totMoney, int currentScore) {
+    public UserVO(int no, String name, int number, String id, int totMoney, int currentScore) {
         this.no = no;
         this.name = name;
         this.number = number;

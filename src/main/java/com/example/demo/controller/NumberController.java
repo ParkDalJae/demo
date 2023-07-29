@@ -10,6 +10,7 @@ import java.util.Map;
 
 @Controller
 public class NumberController {
+
     @PostMapping("/sendNumberToServer")
     @ResponseBody
     public Map<String, Object> receiveNumber(@RequestParam("number") int number) {
