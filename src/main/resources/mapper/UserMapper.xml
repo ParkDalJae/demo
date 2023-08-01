@@ -2,6 +2,19 @@
         <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
+<select id="selectAllUsers"  resultType="com.example.demo.model.UserVO" >
+    SELECT
+        NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+    FROM users
 
+</select>
+    <select id="selectUser"  resultType="com.example.demo.model.UserVO"  parameterType="com.example.demo.model.UserVO">
+
+        SELECT
+            NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+        FROM users
+        WHERE ID = #{id}
+        AND NAME = #{name}
+    </select>
 
 </mapper>

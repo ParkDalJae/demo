@@ -19,9 +19,7 @@ public class UserService {
 
   public List<UserVO> SelectAllUsers(){
 
-
-
-      return null;
+      return userMapper.selectAllUsers() ;
   }
 
 

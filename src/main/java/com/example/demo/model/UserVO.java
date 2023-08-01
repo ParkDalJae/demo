@@ -1,19 +1,22 @@
 package com.example.demo.model;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("UserVO")
 public class UserVO {
     private int no;
     private String name;
     private int number;
     private String id;
     private int totMoney;
-    private int currentScore;
+    private String currentScore;
 
     // 기본 생성자
     public UserVO() {
     }
 
     // 모든 필드를 포함하는 생성자
-    public UserVO(int no, String name, int number, String id, int totMoney, int currentScore) {
+    public UserVO(int no, String name, int number, String id, int totMoney, String currentScore) {
         this.no = no;
         this.name = name;
         this.number = number;
@@ -63,11 +66,11 @@ public class UserVO {
         this.totMoney = totMoney;
     }
 
-    public int getCurrentScore() {
+    public String getCurrentScore() {
         return currentScore;
     }
 
-    public void setCurrentScore(int currentScore) {
+    public void setCurrentScore(String currentScore) {
         this.currentScore = currentScore;
     }
 }

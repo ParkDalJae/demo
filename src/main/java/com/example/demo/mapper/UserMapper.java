@@ -8,5 +8,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 
-    List<UserVO> SelectAllUsers();
+    List<UserVO> selectAllUsers();
+
+    UserVO selectUser(UserVO vo);
 }

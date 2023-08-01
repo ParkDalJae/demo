@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import com.example.demo.model.UserVO;
 
+import java.util.Comparator;
+import java.util.List;
+
 @Controller
 public class UserController {
 
@@ -25,12 +28,15 @@ public class UserController {
 
     @GetMapping("/")
     public String home(Model model) {
+        String url = "index";
 
+        List<UserVO> result =    userService.SelectAllUsers();
 
         System.out.println("home controller start");
-        model.addAttribute("name", "유저컨트롤러에서 만든 ");
-        return "index";
+        model.addAttribute("userInfo", result);
+        return url;
     }
+
 
     @GetMapping("/userSignUp")
     public String showSignUpPage() {
