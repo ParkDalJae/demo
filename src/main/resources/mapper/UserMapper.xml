@@ -8,13 +8,12 @@
     FROM users
 
 </select>
-    <select id="selectUser"  resultType="com.example.demo.model.UserVO"  parameterType="com.example.demo.model.UserVO">
+<select id="selectUser"  resultType="com.example.demo.model.UserVO"  parameterType="com.example.demo.model.UserVO">
 
-        SELECT
-            NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
-        FROM users
-        WHERE ID = #{id}
-        AND NAME = #{name}
-    </select>
+    SELECT
+        NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+    FROM users
+    WHERE NAME = #{name}
+</select>
 
 </mapper>

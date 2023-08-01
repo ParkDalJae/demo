@@ -18,49 +18,49 @@ import java.util.List;
 @Controller
 public class UserController {
 
-    //DI 객체 주입
-    private final UserService userService;
+  //DI 객체 주입
+  private final UserService userService;
 
-    @Autowired
-    UserController(UserService userService){
-        this.userService = userService;
-    }
+  @Autowired
+  UserController(UserService userService) {
+    this.userService = userService;
+  }
 
-    @GetMapping("/")
-    public String home(Model model) {
-        String url = "index";
+  @GetMapping("/")
+  public String home(Model model) {
+    String url = "index";
 
-        List<UserVO> result =    userService.SelectAllUsers();
+    List<UserVO> result = userService.SelectAllUsers();
 
-        System.out.println("home controller start");
-        model.addAttribute("userInfo", result);
-        return url;
-    }
+    System.out.println("home controller start");
+    model.addAttribute("userInfo", result);
+    return url;
+  }
 
 
-    @GetMapping("/userSignUp")
-    public String showSignUpPage() {
-        // 회원 가입 페이지 보여주는 로직
-        return "signup";
-    }
+  @GetMapping("/userSignUp")
+  public String showSignUpPage() {
+    // 회원 가입 페이지 보여주는 로직
+    return "signup";
+  }
 
-    @PostMapping("/userSignUp")
-    public String processSignUp(@ModelAttribute("user") UserVO userVO) {
-        // 회원 가입 처리 로직
-        return "welcome";
-    }
+  @PostMapping("/userSignUp")
+  public String processSignUp(@ModelAttribute("user") UserVO userVO) {
+    // 회원 가입 처리 로직
+    return "welcome";
+  }
 
-    @PutMapping("/users/{id}")
-    public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") UserVO userVO) {
-        // 사용자 정보 업데이트 처리 로직
-        return "success";
-    }
+  @PutMapping("/users/{id}")
+  public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") UserVO userVO) {
+    // 사용자 정보 업데이트 처리 로직
+    return "success";
+  }
 
-    @DeleteMapping("/users/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        // 사용자 삭제 처리 로직
-        return "deleted";
-    }
+  @DeleteMapping("/users/{id}")
+  public String deleteUser(@PathVariable("id") Long id) {
+    // 사용자 삭제 처리 로직
+    return "deleted";
+  }
 
 
 }
