@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
 
-<select id="selectAllUsers"  resultType="com.example.demo.model.UserVO" >
-    SELECT
-        NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
-    FROM users
+    <select id="selectAllUsers" resultType="com.example.demo.model.UserVO">
+        SELECT
+            NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+        FROM users
 
-</select>
-<select id="selectUser"  resultType="com.example.demo.model.UserVO"  parameterType="com.example.demo.model.UserVO">
+    </select>
+    <select id="selectUser" resultType="com.example.demo.model.UserVO" parameterType="com.example.demo.model.UserVO">
 
-    SELECT
-        NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
-    FROM users
-    WHERE NAME = #{name}
-</select>
+        SELECT
+            NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+        FROM users
+        WHERE NAME = #{name}
+    </select>
+    <!-- INSERT -->
+    <insert id="insertUser" parameterType="com.example.demo.model.UserVO">
+        INSERT INTO users (NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE)
+        VALUES (#{name}, #{number}, #{id}, #{totMoney}, #{currentScore})
+    </insert>
 
+    <!-- INSERT BATCH -->
+    <insert id="insertUsersBatch" parameterType="java.util.List">
+        INSERT INTO users (name, number, id, tot_money, current_score)
+        VALUES
+        <foreach item="user" collection="list" separator=",">
+            (#{user.name}, #{user.number}, #{user.id}, #{user.totMoney}, #{user.currentScore})
+        </foreach>
+    </insert>
+
+    <update id="updateUser" parameterType="com.example.demo.model.UserVO">
+
+    </update>
+    <delete id="deleteUser" parameterType="int">
+
+    </delete>
 </mapper>

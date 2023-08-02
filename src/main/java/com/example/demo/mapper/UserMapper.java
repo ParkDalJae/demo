@@ -11,4 +11,8 @@ public interface UserMapper {
     List<UserVO> selectAllUsers();
 
     UserVO selectUser(UserVO vo);
+
+    void insertUser(UserVO vo);
+
+    void insertUsersBatch(List<UserVO> users);
 }

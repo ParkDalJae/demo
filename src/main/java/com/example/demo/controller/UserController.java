@@ -38,12 +38,6 @@ public class UserController {
   }
 
 
-  @GetMapping("/userSignUp")
-  public String showSignUpPage() {
-    // 회원 가입 페이지 보여주는 로직
-    return "signup";
-  }
-
   @PostMapping("/userSignUp")
   public String processSignUp(@ModelAttribute("user") UserVO userVO) {
     // 회원 가입 처리 로직

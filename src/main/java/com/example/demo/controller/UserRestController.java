@@ -14,23 +14,23 @@ import java.util.Map;
 
 @RestController
 public class UserRestController {
-    private final UserService userService;
+  private final UserService userService;
 
-    @Autowired
-    UserRestController(UserService userService){
-        this.userService = userService;
-    }
+  @Autowired
+  UserRestController(UserService userService) {
+    this.userService = userService;
+  }
 
 
- @RequestMapping ("")
-    public ResponseEntity<List<UserVO>> orderlist(@RequestBody Map<String, String> vo) throws Exception{
-        ResponseEntity<List<UserVO>> entity = null;
+  @RequestMapping("")
+  public ResponseEntity<List<UserVO>> orderlist(@RequestBody Map<String, String> vo) throws Exception {
+    ResponseEntity<List<UserVO>> entity = null;
 
-        List<UserVO> list = userService.SelectAllUsers();
+    List<UserVO> list = userService.SelectAllUsers();
 
-        entity =  new ResponseEntity<List<UserVO>>(list, HttpStatus.OK);
+    entity = new ResponseEntity<List<UserVO>>(list, HttpStatus.OK);
 
-        return entity;
-    }
+    return entity;
+  }
 
 }
