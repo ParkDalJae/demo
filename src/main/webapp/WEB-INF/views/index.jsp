@@ -20,7 +20,7 @@
       }
 
       #left-side-wrap {
-          width: 15%
+          width: 12%
       }
 
       #left-side-wrap > ul {
@@ -37,7 +37,7 @@
 
       #right-side-wrap {
           width: 80%;
-          height: 955px;
+          height: 800px;
           background: #aeffff;
       }
 
@@ -116,7 +116,7 @@
       /*유저 목록 부분.*/
       #userList {
           background: #fefefe;
-          overflow-y: auto;
+
           margin: 5px;
           border-radius: 5px;
       }
@@ -160,6 +160,21 @@
           text-align: center;
       }
 
+      #contentRow {
+          height: 550px;
+          overflow-y: auto;
+      }
+
+      #contentRow::-webkit-scrollbar {
+          width: 0;
+          background: transparent;
+      }
+
+      #contentRow {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+
       /*상단 메뉴 CSS*/
       .headerBtn {
           width: 130px;
@@ -179,9 +194,23 @@
 
       #searchUser {
           display: flex;
-          padding: 10px;
+          padding: 0px 10px;
       }
 
+      #footer {
+          justify-content: end;
+          display: flex;
+          padding: 20px 50px;
+      }
+
+      #footer > div {
+          background: #EF5350;
+          width: 400px;
+          display: flex;
+          justify-content: space-between;
+          margin: 0px 10px;
+
+      }
 
       /*input 타입 숫자 위아래 버튼제거*/
       input[type="number"]::-webkit-inner-spin-button,
@@ -263,7 +292,7 @@
 
       <div id="right-menu-wrap" style="display: flex">
         <button class="headerBtn" onclick="openModal('addMembers')">회원 추가</button>
-        <button id= "updateBtn" class="headerBtn" >선택 수정</button>
+        <button id="updateBtn" class="headerBtn">선택 수정</button>
         <button class="headerBtn" onclick="memDel()">회원 삭제</button>
         <div id="searchUser">
           <select>
@@ -287,7 +316,7 @@
 
       <!-- 메뉴 열 -->
       <div id="headerRow" class=" grid-row">
-        <div></div>
+        <div>${fn:length(userInfo)}</div>
         <div>no</div>
         <div>이름</div>
         <div>번호</div>
@@ -297,23 +326,26 @@
       </div>
 
       <!-- 내용 열(DB기준 조회) -->
-      <c:forEach items="${userInfo}" var="user">
-        <div class=" grid-row">
-          <div class="list-items">
-            <input class="dataChecked" type="checkbox" data-no="${user.no}">
+      <div id="contentRow">
+
+        <c:forEach items="${userInfo}" var="user">
+          <div class=" grid-row">
+            <div class="list-items">
+              <input class="dataChecked" type="checkbox" data-no="${user.no}">
+            </div>
+            <div class="list-items">${user.no}</div>
+            <div class="list-items">${user.name}</div>
+            <div class="list-items">${user.number == null ? "-" : user.number}</div>
+            <div class="list-items">${user.id}</div>
+            <div class="list-items">
+              <fmt:formatNumber value="${user.totMoney == null ? '-' : user.totMoney}" type="number" pattern="#,###"/>
+            </div>
+            <div class="list-items">
+                ${user.currentScore == null ? '-' : user.currentScore}
+            </div>
           </div>
-          <div class="list-items">${user.no}</div>
-          <div class="list-items">${user.name}</div>
-          <div class="list-items">${user.number == null ? "-" : user.number}</div>
-          <div class="list-items">${user.id}</div>
-          <div class="list-items">
-            <fmt:formatNumber value="${user.totMoney == null ? '-' : user.totMoney}" type="number" pattern="#,###"/>
-          </div>
-          <div class="list-items">
-              ${user.currentScore == null ? '-' : user.currentScore}
-          </div>
-        </div>
-      </c:forEach>
+        </c:forEach>
+      </div>
 
       <!-- 내용 열(20개 보다 모자라면 자동생성) -->
       <c:set var="listSize" value="${fn:length(userInfo)}"/>
@@ -330,13 +362,29 @@
         </c:forEach>
       </c:if>
     </div>
+    <div id="footer">
+      <div>
+        <div style="display: flex;align-items: end">총 입금액</div>
+        <div style="display: flex; align-items: end">
+          <div id="totalMoney" style="font-size: 40px">tmp</div>
+          <div>원</div>
+        </div>
+      </div>
+      <div>
+        <div style="display: flex;align-items: end">총 수입금</div>
+        <div style="display: flex; align-items: end">
+          <div id="totCurrnetScore" style="font-size: 50px">tmp</div>
+          <div>원</div>
+        </div>
+      </div>
+    </div>
   </div>
   <%-- 유저목록 끝 --%>
 </div>
 
-<script src="/js/main.js"> </script>
-<script src="<c:url value="/js/addMember.js"/>"> </script>
-<script src="<c:url value="/js/deleteMember.js"/>"> </script>
-<script src="<c:url value="/js/updateMember.js"/>"> </script>
+<script src="/js/main.js"></script>
+<script src="<c:url value="/js/addMember.js"/>"></script>
+<script src="<c:url value="/js/deleteMember.js"/>"></script>
+<script src="<c:url value="/js/updateMember.js"/>"></script>
 </body>
 </html>

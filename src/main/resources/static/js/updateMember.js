@@ -51,3 +51,6 @@ document.getElementById("updateBtn").addEventListener("click", async () => {
         console.error("오류 발생:", error);
     }
 });
+document.getElementById("updateUsers").addEventListener("click",()=>{
+
+})
