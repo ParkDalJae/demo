@@ -6,15 +6,35 @@
         SELECT
             NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
         FROM users
-
+        ORDER BY NO DESC;
     </select>
-    <select id="selectUser" resultType="com.example.demo.model.UserVO" parameterType="com.example.demo.model.UserVO">
 
+    <select id="selectUserName" resultType="com.example.demo.model.UserVO" parameterType="com.example.demo.model.UserVO">
         SELECT
             NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
         FROM users
         WHERE NAME = #{name}
     </select>
+<!--  no 컬럼 기준 조회  -->
+    <select id="selectUserChecked" resultType="com.example.demo.model.UserVO" parameterType="java.util.List">
+        SELECT
+        NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+        FROM users
+        WHERE NO IN
+        <foreach item="no" collection="nos" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </select>
+    <select id="selectUsersByNos" resultType="com.example.demo.model.UserVO" parameterType="java.util.List">
+        SELECT
+        NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
+        FROM users
+        WHERE NO IN
+        <foreach item="no" collection="list" open="(" separator="," close=")">
+            #{no}
+        </foreach>
+    </select>
+
     <!-- INSERT -->
     <insert id="insertUser" parameterType="com.example.demo.model.UserVO">
         INSERT INTO users (NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE)
@@ -33,6 +53,7 @@
     <update id="updateUser" parameterType="com.example.demo.model.UserVO">
 
     </update>
+
     <delete id="deleteUser" parameterType="int">
 
     </delete>

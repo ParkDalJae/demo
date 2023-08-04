@@ -5,20 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import com.example.demo.model.UserVO;
-
-import java.util.Comparator;
-import java.util.List;
 
 @Controller
 public class UserController {
 
-  //DI 객체 주입
   private final UserService userService;
 
   @Autowired
@@ -30,31 +20,9 @@ public class UserController {
   public String home(Model model) {
     String url = "index";
 
-    List<UserVO> result = userService.SelectAllUsers();
+    // 루트 경로로 접속 시, 사용자 정보를 조회하여 모델에 추가
+    model.addAttribute("userInfo", userService.selectAllUsers());
 
-    System.out.println("home controller start");
-    model.addAttribute("userInfo", result);
     return url;
   }
-
-
-  @PostMapping("/userSignUp")
-  public String processSignUp(@ModelAttribute("user") UserVO userVO) {
-    // 회원 가입 처리 로직
-    return "welcome";
-  }
-
-  @PutMapping("/users/{id}")
-  public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") UserVO userVO) {
-    // 사용자 정보 업데이트 처리 로직
-    return "success";
-  }
-
-  @DeleteMapping("/users/{id}")
-  public String deleteUser(@PathVariable("id") Long id) {
-    // 사용자 삭제 처리 로직
-    return "deleted";
-  }
-
-
 }

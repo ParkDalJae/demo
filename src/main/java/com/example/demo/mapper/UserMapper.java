@@ -10,7 +10,9 @@ public interface UserMapper {
 
     List<UserVO> selectAllUsers();
 
-    UserVO selectUser(UserVO vo);
+    UserVO selectUserName(UserVO vo);
+
+    List<UserVO> selectUserChecked(List<Long> nos);
 
     void insertUser(UserVO vo);
 
