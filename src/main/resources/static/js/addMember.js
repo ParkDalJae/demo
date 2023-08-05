@@ -1,6 +1,5 @@
 console.log(1, "addMember")
 document.addEventListener("DOMContentLoaded", () => {
-    alert(1)
     console.log(3, "DOMContentLoaded")
     const addUsers = document.getElementById("addUsers");
 
@@ -54,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (userVO.length === 0) {
-            alert("유효한 데이터가 없거나 부족합니다.");
+            displayErrorMessage(document.querySelector("#item-1-id"),"입력된 값이 없습니다.")
 
         } else {
             console.log("하나 이상의 유효한 데이터가 있어서 서버에 전송합니다.");

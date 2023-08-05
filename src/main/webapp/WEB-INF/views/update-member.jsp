@@ -22,7 +22,7 @@
 
     <!-- 하단 버튼 -->
     <div class="button-group">
-      <button id="updateUsers" class="update-button">회원 추가</button>
+      <button id="updateUsers" class="update-button">회원 수정</button>
       <button class="cancel-button" onclick="closeModal('updateMembers')">취소</button>
     </div>
   </div>

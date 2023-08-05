@@ -383,8 +383,8 @@
 </div>
 
 <script src="/js/main.js"></script>
-<script src="<c:url value="/js/addMember.js"/>"></script>
-<script src="<c:url value="/js/deleteMember.js"/>"></script>
-<script src="<c:url value="/js/updateMember.js"/>"></script>
+<script src="/js/addMember.js"/></script>
+<script src="/js/deleteMember.js"/></script>
+<script src="/js/updateMember.js"/></script>
 </body>
 </html>
