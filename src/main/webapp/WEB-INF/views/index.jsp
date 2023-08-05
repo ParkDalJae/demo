@@ -161,8 +161,9 @@
       }
 
       #contentRow {
-          height: 550px;
           overflow-y: auto;
+          -ms-overflow-style: none;
+          scrollbar-width: none;
       }
 
       #contentRow::-webkit-scrollbar {
@@ -171,8 +172,7 @@
       }
 
       #contentRow {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
+
       }
 
       /*상단 메뉴 CSS*/

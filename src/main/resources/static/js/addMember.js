@@ -1,11 +1,10 @@
 console.log(1, "addMember")
 document.addEventListener("DOMContentLoaded", () => {
-
+    alert(1)
     console.log(3, "DOMContentLoaded")
     const addUsers = document.getElementById("addUsers");
 
     addUsers.addEventListener("click", () => {
-        let validDataCounter = 0;
         let errorMessages = [];
         let userVO = [];
 
@@ -28,10 +27,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 if ((idValue === "" && nameValue !== "") || (idValue !== "" && nameValue === "")) {
                     errorMessages.push(`행 ${i}: 이름과 아이디를 함께 입력해야 합니다.`);
                     if (idValue === "" && nameValue !== "") {
-                        idInput.style.color = "red";
+                        idInput.style.border = "red";
                         displayErrorMessage(idInput, "이름과 아이디를 함께 입력해야 합니다.");
                     } else if (idValue !== "" && nameValue === "") {
-                        nameInput.style.color = "red";
+                        nameInput.style.border = "red";
                         displayErrorMessage(nameInput, "이름과 아이디를 함께 입력해야 합니다.");
                     }
                 } else if ((idValue === "" && nameValue === "") && (numberInput.value !== "" || totMoneyInput.value !== "" || currentScoreInput.value !== "")) {
@@ -55,10 +54,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (userVO.length === 0) {
-            console.log("유효한 데이터가 없거나 부족합니다. 강조 메세지를 출력합니다.");
-            errorMessages.forEach(message => {
-                console.log(message);
-            });
+            alert("유효한 데이터가 없거나 부족합니다.");
+
         } else {
             console.log("하나 이상의 유효한 데이터가 있어서 서버에 전송합니다.");
             sendUserDataToServer(userVO);
