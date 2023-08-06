@@ -10,7 +10,7 @@ public interface UserMapper {
 
     List<UserVO> selectAllUsers();
 
-    UserVO selectUserName(UserVO vo);
+    List<UserVO> searchUsers(String searchType, String searchKeyword);
 
     List<UserVO> selectUserChecked(List<Long> nos);
 

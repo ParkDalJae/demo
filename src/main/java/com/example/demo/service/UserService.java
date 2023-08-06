@@ -21,6 +21,10 @@ public class UserService {
     return userMapper.selectAllUsers();
   }
 
+  public List<UserVO> searchUsers(String searchType, String searchKeyword) {
+    return userMapper.searchUsers(searchType, searchKeyword);
+  }
+
   public List<UserVO> getUsersByNos(List<Long> nos) {
     return userMapper.selectUserChecked(nos);
   }

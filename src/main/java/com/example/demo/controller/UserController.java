@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -25,4 +26,15 @@ public class UserController {
 
     return url;
   }
+  //검색
+  @GetMapping("/search")
+  public String searchUsers(Model model,
+                            @RequestParam(value = "searchType", required = false) String searchType,
+                            @RequestParam(value = "searchKeyword", required = false) String searchKeyword) {
+    // 검색 조건과 검색어를 사용하여 회원 정보를 검색합니다.
+    model.addAttribute("userInfo", userService.searchUsers(searchType, searchKeyword));
+
+    return "index";
+  }
+
 }

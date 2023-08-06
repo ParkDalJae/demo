@@ -41,6 +41,11 @@
           background: #aeffff;
       }
 
+      #searchUser {
+          height: 40px;
+          margin: 10px 0px;
+      }
+
       #right-menu-wrap {
 
       }
@@ -296,13 +301,13 @@
         <button id="updateBtn" class="headerBtn">선택 수정</button>
         <button id="deleteBtn" class="headerBtn">회원 삭제</button>
         <div id="searchUser">
-          <select>
-            <option>이름으로 검색</option>
-            <option>ID로 검색</option>
-            <option>번호로 검색</option>
+          <select id="searchType">
+            <option value="name">이름으로 검색</option>
+            <option value="id">ID로 검색</option>
+            <option value="number">번호로 검색</option>
           </select>
-          <input type="text">
-          <button>검색</button>
+          <input type="text" id="searchKeyword" placeholder="검색어를 입력하세요">
+          <button onclick="searchUsers()">검색</button>
         </div>
       </div>
 
@@ -374,7 +379,7 @@
         <div style="display: flex;align-items: end">총 입금액</div>
         <div style="display: flex; align-items: end">
           <div id="totalMoney" style="font-size: 40px">
-            <fmt:formatNumber value="${totalMoney}" type="number" pattern="#,###" />
+            <fmt:formatNumber value="${totalMoney}" type="number" pattern="#,###"/>
           </div>
           <div>원</div>
         </div>
@@ -383,7 +388,7 @@
         <div style="display: flex;align-items: end">총 수입금</div>
         <div style="display: flex; align-items: end">
           <div id="totCurrnetScore" style="font-size: 50px">
-            <fmt:formatNumber value="${totalScore}" type="number" pattern="#,###" />
+            <fmt:formatNumber value="${totalScore}" type="number" pattern="#,###"/>
 
           </div>
           <div>원</div>
@@ -398,6 +403,7 @@
 <script src="<c:url value='/js/addMember.js'/>"></script>
 <script src="<c:url value='/js/deleteMember.js'/>"></script>
 <script src="<c:url value='/js/updateMember.js'/>"></script>
+<script src="<c:url value='/js/searchMember.js'/>"></script>
 
 </body>
 </html>
