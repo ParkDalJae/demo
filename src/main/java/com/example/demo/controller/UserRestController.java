@@ -61,5 +61,16 @@ public class UserRestController {
     }
   }
 
-  // 나머지 PUT, DELETE 메소드 등도 필요한 경우 작성
+  @PostMapping("/deleteusers")
+  public ResponseEntity<String> deleteUsers(@RequestBody List<String> userNos) {
+    try {
+      System.out.println(userNos);
+      userService.deleteUsers(userNos);
+      return new ResponseEntity<>("삭제가 정상적으로 완료되었습니다.", HttpStatus.OK);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .body("Error: " + e.getMessage()); // 에러 메시지를 응답으로 전달
+    }
+  }
+
 }

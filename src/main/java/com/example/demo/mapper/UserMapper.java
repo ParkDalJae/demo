@@ -19,4 +19,6 @@ public interface UserMapper {
     void insertUsersBatch(List<UserVO> users);
 
     void updateUsers(List<UserVO> users);
+
+    void deleteUsers(List<String> nos);
 }

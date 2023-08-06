@@ -34,4 +34,6 @@ public class UserService {
   }
 
   public void updateUsers(List<UserVO> userVO){ userMapper.updateUsers(userVO);}
+
+  public void deleteUsers(List<String> nos){userMapper.deleteUsers(nos);}
 }

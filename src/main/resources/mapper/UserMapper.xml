@@ -50,7 +50,7 @@
             (#{user.name}, #{user.number}, #{user.id}, #{user.totMoney}, #{user.currentScore})
         </foreach>
     </insert>
-
+    <!--  UPDATE  -->
     <update id="updateUsers" parameterType="java.util.List">
         UPDATE users
         <trim prefix="SET" suffixOverrides=",">
@@ -67,9 +67,11 @@
             #{user.no}
         </foreach>
     </update>
-
-
-    <delete id="deleteUser" parameterType="int">
-
+    <!--  DELETE  -->
+    <delete id="deleteUsers" parameterType="java.util.List">
+        DELETE FROM USERS WHERE NO IN
+        <foreach collection="list" item="no" open="(" separator="," close=")">
+            #{no}
+        </foreach>
     </delete>
 </mapper>
