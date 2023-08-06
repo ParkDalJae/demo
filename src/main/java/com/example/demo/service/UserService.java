@@ -32,4 +32,6 @@ public class UserService {
   public void signUpUsersBatch(List<UserVO> users) {
     userMapper.insertUsersBatch(users);
   }
+
+  public void updateUsers(List<UserVO> userVO){ userMapper.updateUsers(userVO);}
 }

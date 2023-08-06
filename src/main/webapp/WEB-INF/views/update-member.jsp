@@ -11,6 +11,7 @@
 
       <c:forEach begin="1" end="10" var="index">
         <div id="update-${index}" class="add-grid-row">
+          <input id="update-${index}-no" style="display: none">
           <input id="update-${index}-name" class="add-gird-items" type="text" placeholder="이름">
           <input id="update-${index}-number" class="add-gird-items" type="number" placeholder="번호">
           <input id="update-${index}-id" class="add-gird-items" type="text" placeholder="아이디">

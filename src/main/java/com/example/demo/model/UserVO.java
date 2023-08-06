@@ -9,14 +9,14 @@ public class UserVO {
     private int number;
     private String id;
     private int totMoney;
-    private String currentScore;
+    private int currentScore;
 
     // 기본 생성자
     public UserVO() {
     }
 
     // 모든 필드를 포함하는 생성자
-    public UserVO(int no, String name, int number, String id, int totMoney, String currentScore) {
+    public UserVO(int no, String name, int number, String id, int totMoney, int currentScore) {
         this.no = no;
         this.name = name;
         this.number = number;
@@ -66,11 +66,11 @@ public class UserVO {
         this.totMoney = totMoney;
     }
 
-    public String getCurrentScore() {
+    public int getCurrentScore() {
         return currentScore;
     }
 
-    public void setCurrentScore(String currentScore) {
+    public void setCurrentScore(int currentScore) {
         this.currentScore = currentScore;
     }
 }

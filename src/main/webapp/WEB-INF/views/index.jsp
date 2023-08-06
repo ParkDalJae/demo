@@ -204,7 +204,8 @@
       }
 
       #footer > div {
-          background: #EF5350;
+          background: #aeffff;
+          border-radius: 30px;
           width: 400px;
           display: flex;
           justify-content: space-between;
@@ -293,7 +294,7 @@
       <div id="right-menu-wrap" style="display: flex">
         <button class="headerBtn" onclick="openModal('addMembers')">회원 추가</button>
         <button id="updateBtn" class="headerBtn">선택 수정</button>
-        <button class="headerBtn" onclick="memDel()">회원 삭제</button>
+        <button id="deleteBtn" class="headerBtn">회원 삭제</button>
         <div id="searchUser">
           <select>
             <option>이름으로 검색</option>
@@ -313,7 +314,8 @@
 
     <!-- 유저 목록 -->
     <div id="userList">
-
+      <% Integer totMon;
+        Integer totScore; %>
       <!-- 메뉴 열 -->
       <div id="headerRow" class=" grid-row">
         <div>${fn:length(userInfo)}</div>
@@ -327,7 +329,8 @@
 
       <!-- 내용 열(DB기준 조회) -->
       <div id="contentRow">
-
+        <c:set var="totalMoney" value="0" scope="page"/>
+        <c:set var="totalScore" value="0" scope="page"/>
         <c:forEach items="${userInfo}" var="user">
           <div class=" grid-row">
             <div class="list-items">
@@ -341,8 +344,12 @@
               <fmt:formatNumber value="${user.totMoney == null ? '-' : user.totMoney}" type="number" pattern="#,###"/>
             </div>
             <div class="list-items">
-                ${user.currentScore == null ? '-' : user.currentScore}
+              <fmt:formatNumber value="${user.currentScore == null ? '-' : user.currentScore}" type="number"
+                                pattern="#,###"/>
+
             </div>
+            <c:set var="totalMoney" value="${totalMoney + user.totMoney}"/>
+            <c:set var="totalScore" value="${totalScore + user.currentScore}"/>
           </div>
         </c:forEach>
       </div>
@@ -366,14 +373,19 @@
       <div>
         <div style="display: flex;align-items: end">총 입금액</div>
         <div style="display: flex; align-items: end">
-          <div id="totalMoney" style="font-size: 40px">tmp</div>
+          <div id="totalMoney" style="font-size: 40px">
+            <fmt:formatNumber value="${totalMoney}" type="number" pattern="#,###" />
+          </div>
           <div>원</div>
         </div>
       </div>
       <div>
         <div style="display: flex;align-items: end">총 수입금</div>
         <div style="display: flex; align-items: end">
-          <div id="totCurrnetScore" style="font-size: 50px">tmp</div>
+          <div id="totCurrnetScore" style="font-size: 50px">
+            <fmt:formatNumber value="${totalScore}" type="number" pattern="#,###" />
+
+          </div>
           <div>원</div>
         </div>
       </div>
@@ -383,8 +395,9 @@
 </div>
 
 <script src="/js/main.js"></script>
-<script src="/js/addMember.js"/></script>
-<script src="/js/deleteMember.js"/></script>
-<script src="/js/updateMember.js"/></script>
+<script src="<c:url value='/js/addMember.js'/>"></script>
+<script src="<c:url value='/js/deleteMember.js'/>"></script>
+<script src="<c:url value='/js/updateMember.js'/>"></script>
+
 </body>
 </html>

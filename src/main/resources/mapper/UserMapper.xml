@@ -25,6 +25,7 @@
             #{no}
         </foreach>
     </select>
+
     <select id="selectUsersByNos" resultType="com.example.demo.model.UserVO" parameterType="java.util.List">
         SELECT
         NO, NAME, NUMBER, ID, TOT_MONEY, CURRENT_SCORE
@@ -50,9 +51,23 @@
         </foreach>
     </insert>
 
-    <update id="updateUser" parameterType="com.example.demo.model.UserVO">
-
+    <update id="updateUsers" parameterType="java.util.List">
+        UPDATE users
+        <trim prefix="SET" suffixOverrides=",">
+            <foreach collection="list" item="user" separator=",">
+                NAME = #{user.name},
+                NUMBER = #{user.number},
+                ID = #{user.id},
+                TOT_MONEY = #{user.totMoney},
+                CURRENT_SCORE = #{user.currentScore}
+            </foreach>
+        </trim>
+        WHERE NO IN
+        <foreach item="user" collection="list" open="(" separator="," close=")">
+            #{user.no}
+        </foreach>
     </update>
+
 
     <delete id="deleteUser" parameterType="int">
 

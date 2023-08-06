@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.UserVO;
 import com.example.demo.service.UserService;
+import com.sun.tools.jconsole.JConsoleContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.HttpStatus;
@@ -45,6 +46,18 @@ public class UserRestController {
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
           .body(null); // 에러 발생 시 빈 응답 또는 에러 메시지 전달
+    }
+  }
+
+  @PostMapping("/updateusers")
+  public ResponseEntity<String> updateUsers(@RequestBody List<UserVO> userVOList) {
+    try {
+      System.out.println(userVOList);
+      userService.updateUsers(userVOList); // 서비스 계층의 메서드 호출하여 사용자 정보 수정
+      return new ResponseEntity<>("수정이 정상적으로 완료되었습니다.", HttpStatus.OK);
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+          .body("Error: " + e.getMessage()); // 에러 메시지를 응답으로 전달
     }
   }
 

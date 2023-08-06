@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener("change", limitCheckboxSelection);
     });
+    document.getElementById("totalMoney")
+    document.getElementById("totCurrnetScore")
 });
 
 // 체크박스 선택 개수 제한 함수

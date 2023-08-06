@@ -16,7 +16,7 @@
           <input id="item-${index}-number" class="add-gird-items" type="number" placeholder="번호">
           <input id="item-${index}-id" class="add-gird-items" type="text" placeholder="아이디">
           <input id="item-${index}-totMoney" class="add-gird-items" type="number" placeholder="총 입금액">
-          <input id="item-${index}-currentScore" class="add-gird-items" type="text" placeholder="현재 스코어">
+          <input id="item-${index}-currentScore" class="add-gird-items" type="number" placeholder="현재 스코어">
         </div>
       </c:forEach>
     </div>
